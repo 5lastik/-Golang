@@ -22,11 +22,9 @@ func Input_bus() (a, op, b string) {
 	parts := strings.Split(input, " ")
 	if len(parts) < 3 {
 		panic("Строка не является математической операцией.")
-		return
 	}
 	if len(parts) != 3 {
 		panic("Формат математической операции не удовлетворяет заданию — два операнда и один оператор (+, -, /, *).")
-		return
 	}
 	a = parts[0]
 	op = parts[1]
@@ -48,8 +46,7 @@ func Math_bus(a, op, b string) (string, string) {
 		aa, _ := strconv.Atoi(a) // конвертация с строки в число
 		bb, _ := strconv.Atoi(b)
 		if (op == "-" || op == "/") && num1 == true && (aa-bb <= 0 || aa/bb <= 0) {
-			panic("В римской системе нет отрицательных чисел."
-			return err, output
+			panic("В римской системе нет отрицательных чисел.")
 		} // проверка на допустимость отрицательных римсчких чисел
 		switch op {
 		case "+":
@@ -61,10 +58,10 @@ func Math_bus(a, op, b string) (string, string) {
 		case "/":
 			result = aa / bb
 		default:
-			panic("Оператор не найден"
+			panic("Оператор не найден")
 		}
 	} else {
-		panic("Используются одновременно разные системы счисления."
+		panic("Используются одновременно разные системы счисления.")
 	}
 	if num1 == true {
 		output = intToRoman(result)
@@ -79,7 +76,7 @@ func intToRoman(num int) string {
 	var values = []int{100, 90, 50, 40, 10, 9, 5, 4, 1}
 	var numerals = []string{"C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"}
 	var result string
-
+	
 	for i, v := range values {
 		count := int(num / v)
 		result += strings.Repeat(numerals[i], count)
@@ -87,7 +84,6 @@ func intToRoman(num int) string {
 	}
 	return result
 }
-
 func main() {
 	fmt.Println(Math_bus(Input_bus()))
 }
