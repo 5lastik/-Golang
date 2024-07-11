@@ -48,6 +48,10 @@ func Math_bus(a, op, b string) (string, string) {
 		if (op == "-" || op == "/") && num1 == true && (aa-bb <= 0 || aa/bb <= 0) {
 			panic("В римской системе нет отрицательных чисел.")
 		} // проверка на допустимость отрицательных римсчких чисел
+		if aa == 0 || bb == 0 {
+			panic("ПРОГРАММА НЕ ДОЛЖНА ПРИНИМАТЬ ЗНАЧЕНИЕ 0")
+		}
+
 		switch op {
 		case "+":
 			result = aa + bb
@@ -76,7 +80,7 @@ func intToRoman(num int) string {
 	var values = []int{100, 90, 50, 40, 10, 9, 5, 4, 1}
 	var numerals = []string{"C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"}
 	var result string
-	
+
 	for i, v := range values {
 		count := int(num / v)
 		result += strings.Repeat(numerals[i], count)
